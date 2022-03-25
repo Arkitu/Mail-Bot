@@ -25,6 +25,7 @@ client.once('ready', () => {
 	log('Bot logged !');
 });
 
+// Listen to commands
 client.on('interactionCreate', async interaction => {
 	if (interaction.isCommand()) {
 		const { commandName } = interaction;
@@ -34,6 +35,7 @@ client.on('interactionCreate', async interaction => {
 
 		log(`${interaction.user.username} execute ${commandName}`);
 
+		// Execute the command
 		try {
 			await command.execute(interaction);
 		} catch (error) {
@@ -42,7 +44,7 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-// Commands
+// Load all commands
 client.commands = new Collection();
 const admin_path = "./commands/admin";
 const everyone_path = "./commands/everyone";
@@ -64,5 +66,5 @@ for (const file of commandFiles.everyone) {
   		});
 }
 
-// Login to Discord with your client's token
+// Login to Discord with client's token
 client.login(config.getData("/token"));
