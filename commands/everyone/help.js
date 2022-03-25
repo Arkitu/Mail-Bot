@@ -3,6 +3,7 @@ import { MessageEmbed } from "discord.js";
 import { JsonDB } from 'node-json-db';
 import { Config } from 'node-json-db/dist/lib/JsonDBConfig.js';
 
+// Discord command that list all the commands
 export const data = new SlashCommandBuilder()
 	.setName("help")
 	.setDescription("Renvoie la liste des commandes")
@@ -36,5 +37,5 @@ export async function execute(interaction) {
 		}
 	}
 
-	await interaction.reply({ embeds: [help_embed] });
+	interaction.reply({ embeds: [help_embed] });
 }

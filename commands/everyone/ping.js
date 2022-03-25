@@ -1,8 +1,9 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 
+// Discord command that respond pong
 export const data = new SlashCommandBuilder()
 	.setName('ping')
 	.setDescription('Répond pong');
 export async function execute(interaction) {
-	await interaction.reply(':ping_pong: Pong !');
+	interaction.reply(':ping_pong: Pong !');
 }
