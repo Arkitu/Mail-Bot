@@ -6,12 +6,13 @@ import { readdirSync } from 'fs';
 // Import config
 const config = new JsonDB(new Config("config", true, true, '/'));
 
-// For log with the current date
+// Log with the current date
 function log(msg) {
 	var datetime = new Date().toLocaleString();
 	console.log(`[${datetime}] ${msg}`);
 };
 
+// Log error with the current date
 async function log_error(msg) {
 	log(`ERROR: ${msg}`);
 	await (await client.users.fetch(config.getData("/creator_id"))).send(`:warning: ERROR: ${msg}`);
@@ -36,11 +37,12 @@ client.on('interactionCreate', async interaction => {
 		log(`${interaction.user.username} execute ${commandName}`);
 
 		// Execute the command
-		try {
+		/*try {
 			await command.execute(interaction);
 		} catch (error) {
 			log_error(error);
-		}
+		}*/
+		await command.execute(interaction);
 	}
 });
 

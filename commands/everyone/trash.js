@@ -6,7 +6,7 @@ export const data = new SlashCommandBuilder()
 	.setName('trash')
 	.setDescription('Affiche la corbeille');
 export async function execute(interaction) {
-	const user = new User(interaction.user);
+	const user = new User(interaction.user.id, interaction.client);
 
 	// Reply with the mail trash
 	interaction.reply({ embeds: [user.trash_embed] });
